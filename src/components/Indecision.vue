@@ -3,7 +3,10 @@
     <div class="bg-dark"></div>
 
     <div class="indecision-container">
-        <input type="text" placeholder="Hazme una pregunta"/>
+        <input
+          v-model="question"
+          type="text"
+          placeholder="Hazme una pregunta" />
         <p>Recuerda terminar con un signo de interrogación (?)</p>
     
         <div>
@@ -19,7 +22,12 @@
 export default {
     data() {
         return {
-            question: 'Hola como estas'
+            question: null
+        }
+    },
+    watch: {
+        question( value, oldValue) {
+            if ( !value.includes('?') ) return
         }
     }
 
